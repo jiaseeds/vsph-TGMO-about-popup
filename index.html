@@ -114,22 +114,32 @@
                 </div>
 
                 <!-- Right Panel: Text Content (Col 2/3) -->
-                <div class="md:col-span-2 p-6 sm:p-8 md:p-10 text-mono-text overflow-y-auto flex flex-col justify-center font-body-font">
+                <!-- UPDATED: Added h-full and changed alignment for footer -->
+                <div class="md:col-span-2 p-6 sm:p-8 md:p-10 text-mono-text overflow-y-auto flex flex-col h-full font-body-font">
                     
-                    <!-- Header (Title) - Garamond font class -->
-                    <h2 class="text-4xl font-header-font font-normal text-mono-text leading-snug tracking-normal mb-8 border-b border-gray-200 pb-2">
-                        The Grand Midori Rising in Ortigas
-                    </h2>
+                    <!-- Main Content Wrapper (Uses flex-grow to push footer down) -->
+                    <div class="flex-grow">
+                        <!-- Header (Title) - Garamond font class -->
+                        <h2 class="text-4xl font-header-font font-normal text-mono-text leading-snug tracking-normal mb-8 border-b border-gray-200 pb-2">
+                            The Grand Midori Rising in Ortigas
+                        </h2>
+                        
+                        <!-- Body Content - Now all text-base and font-normal (Barlow font) -->
+                        <p class="text-gray-700 mb-4 text-base font-normal leading-relaxed">
+                            Federal Land, Inc. brings its first foray in the heart of the Ortigas Central Business District, featuring authentic Japanese modern architecture and design.
+                        </p>
+                        
+                        <p class="text-gray-700 text-base leading-relaxed space-y-4 font-normal">
+                            <span class="block">Renowned Japanese architectural firm Tange Associates was tapped as design consultant to ensure world-class aesthetics and innovation.</span>
+                            <span class="block">Interiors and landscape draw inspiration from the Japanese concepts of 'wabi-sabi' (beauty in imperfection) and 'miyabi' (expression of elegant refinement), creating a truly harmonious living experience.</span>
+                        </p>
+                    </div>
                     
-                    <!-- Body Content - Now all text-base and font-normal (Barlow font) -->
-                    <p class="text-gray-700 mb-4 text-base font-normal leading-relaxed">
-                        Federal Land, Inc. brings its first foray in the heart of the Ortigas Central Business District, featuring authentic Japanese modern architecture and design.
-                    </p>
-                    
-                    <p class="text-gray-700 text-base leading-relaxed space-y-4 font-normal">
-                        <span class="block">Renowned Japanese architectural firm Tange Associates was tapped as design consultant to ensure world-class aesthetics and innovation.</span>
-                        <span class="block">Interiors and landscape draw inspiration from the Japanese concepts of 'wabi-sabi' (beauty in imperfection) and 'miyabi' (expression of elegant refinement), creating a truly harmonious living experience.</span>
-                    </p>
+                    <!-- NEW: Minimalist Footer Section -->
+                    <footer class="mt-8 pt-4 border-t border-gray-200 text-xs text-gray-400">
+                        <p class="mb-1">A Development by Federal Land, Inc.</p>
+                        <p>Discover elegance and refinement | The Grand Midori Ortigas</p>
+                    </footer>
                 </div>
 
             </div>
