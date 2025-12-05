@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Grand Midori</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for elegance and smooth transitions */
         .modal-container {
@@ -67,10 +68,12 @@
             const modalContainer = document.getElementById('modal-content');
             const closeButton = document.getElementById('close-modal-btn'); 
 
+            // Prevent scrolling on the underlying body content
             document.body.style.overflow = 'hidden'; 
 
             function closeModal() {
                 modalContainer.classList.remove('active');
+                // Hide the modal completely after the transition ends (300ms)
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     document.body.style.overflow = ''; 
@@ -80,6 +83,16 @@
             if (closeButton) {
                 closeButton.addEventListener('click', closeModal);
             }
+            
+            // Allow clicking the overlay to close the modal (but only if clicking outside the content)
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Make the modal visible/animated on load
+            modalContainer.classList.add('active');
         });
     </script>
 </head>
@@ -89,17 +102,18 @@
     <!-- The Elegant Modal Popup - Now a centered box -->
     <div id="elegant-modal" class="fixed inset-0 z-50 flex items-center justify-center overlay p-4">
         
-        <!-- Modal Content Container - REVERTED TO BOUNDED SIZE AND SHAPE -->
+        <!-- Modal Content Container -->
         <div id="modal-content" 
-             class="modal-container active crisp-panel rounded-2xl overflow-hidden 
-                    w-full h-[90vh] max-w-sm sm:max-w-4xl lg:max-w-7xl 
+             class="modal-container crisp-panel rounded-2xl overflow-hidden 
+                    w-full max-w-sm sm:max-w-4xl lg:max-w-7xl
+                    h-[90vh] md:h-auto md:max-h-[90vh]
                     mx-auto relative">
 
             <!-- Close Button (Subtle and Monochromatic) -->
             <button id="close-modal-btn"
                     aria-label="Close modal"
-                    class="absolute top-6 right-6 z-20 text-gray-400 hover:text-vibrant-accent transition duration-200 p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    class="absolute top-6 right-6 z-20 text-gray-400 hover:text-vibrant-accent transition duration-200 p-1 rounded-full bg-white/70 backdrop-blur-sm shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -108,10 +122,11 @@
             <div class="grid grid-cols-1 md:grid-cols-3 h-full">
                 
                 <!-- Left Panel: Full-Bleed Image Panel (Col 1/3) -->
-                <div class="md:col-span-1 full-height-on-md bg-cover bg-center rounded-l-2xl" 
+                <!-- The bg-center class already ensures the image is centered. -->
+                <div class="md:col-span-1 full-height-on-md bg-cover bg-center md:rounded-l-2xl" 
                      style="background-image: url('images/tgmo-amenity.jpg');">
-                     <!-- Empty div for a very subtle dark overlay, enhancing depth and focus -->
-                     <div class="w-full h-full bg-black/10"></div>
+                    <!-- Empty div for a very subtle dark overlay, enhancing depth and focus -->
+                    <div class="w-full h-full bg-black/10"></div>
                 </div>
 
                 <!-- Right Panel: Text Content (Col 2/3) -->
@@ -126,12 +141,11 @@
                         
                         <!-- Body Content - Now all text-base and font-normal (Barlow font) -->
                         <p class="text-gray-700 mb-4 text-base font-normal leading-relaxed">
-                            Federal Land, Inc. brings its first foray in the heart of the Ortigas Central Business District, featuring authentic Japanese modern architecture and design.
+                            A unique Japanese sensibility inspires the form and architecture of The Grand Midori Ortigas, the first development of Federal Land in the district. 
                         </p>
                         
                         <p class="text-gray-700 text-base leading-relaxed space-y-4 font-normal">
-                            <span class="block">A unique Japanese sensibility inspires the form and architecture of The Grand Midori Ortigas, the first development of Federal Land in the district.</span>
-                            <span class="block">Designed with the expertise of the world-renowned architects of Tange Associates, an unparalleled, serene living experience like no other unfolds at the heart of a dynamic locale.</span>
+                            Designed with the expertise of the world-renowned architects of Tange Associates, an unparalleled, serene living experience like no other unfolds at the heart of a dynamic locale.
                         </p>
                     </div>
                     
